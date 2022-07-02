@@ -26,7 +26,6 @@ public class PositionBookController {
         }
     }
 
-    // Process payment and receive true/false confirmation
     @PostMapping("/events")
     void sendTradeEvents(@RequestBody Events newEvents) {
         System.out.println("first");
@@ -35,12 +34,12 @@ public class PositionBookController {
         System.out.println("third");
     }
 
-    @DeleteMapping("/payments/{id}")
+    @DeleteMapping("/events/{id}")
     void deletePayment(){
         // code
     }
 
-    @PutMapping("/payments/{id}")
+    @PutMapping("/events/{id}")
     void updatePayment(){
         //code
     }
