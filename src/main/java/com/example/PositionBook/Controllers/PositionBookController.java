@@ -1,5 +1,7 @@
 package com.example.PositionBook.Controllers;
 
+import com.example.PositionBook.Services.Event;
+import com.example.PositionBook.Services.Events;
 import com.example.PositionBook.Services.PositionBook;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +30,14 @@ public class PositionBookController {
     }
 
     // Process payment and receive true/false confirmation
-    @PostMapping("/payments")
+    @PostMapping("/events")
+    void sendTradeEvents(@RequestBody Events newEvents) {
+        // send new events in
+        for (Event event : newEvents.getEvents()){
+            //positionBook.addEvent()
+        }
+    }
+
 
 
     @DeleteMapping("/payments/{id}")
@@ -42,8 +51,4 @@ public class PositionBookController {
     }
 }
 
-
-
-
-}
 
