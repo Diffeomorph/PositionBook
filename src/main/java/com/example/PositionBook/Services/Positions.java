@@ -1,12 +1,15 @@
 package com.example.PositionBook.Services;
 
+import org.springframework.stereotype.Service;
+
 import java.util.TreeMap;
 
-public class PositionBook {
-    final TreeMap<Pair<String,String>,Events> positions; // <account, security> -> list of events
+@Service
+public class Positions {
+    private TreeMap<Pair<String,String>,Events> positionBook; // <account, security> -> list of events
 
-    public PositionBook(){
-        this.positions = new TreeMap();
+    public Positions(){
+        this.positionBook = new TreeMap();
     }
 
     public void addEventsListToPositionBook(Events newEvents){
@@ -14,8 +17,9 @@ public class PositionBook {
             String curAccount = curEvent.getAccount();
             String curSecurity = curEvent.getSecurity();
             Pair curPair = new Pair(curAccount,curSecurity);
-            Events curSelection = positions.getOrDefault(curPair,new Events());
+            Events curSelection = positionBook.getOrDefault(curPair,new Events());
             curSelection.addEvent(curEvent);
+            System.out.println("second");
         }
     }
 }

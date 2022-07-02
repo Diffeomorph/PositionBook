@@ -1,27 +1,24 @@
 package com.example.PositionBook.Controllers;
 
-import com.example.PositionBook.Services.Event;
 import com.example.PositionBook.Services.Events;
-import com.example.PositionBook.Services.PositionBook;
+import com.example.PositionBook.Services.Positions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.TreeMap;
-
 @RestController
 public class PositionBookController {
 
     @Autowired
-    private PositionBook positionBook;
+    private Positions positions;
 
     // Get all position book
     @GetMapping("/position_book")
     String getPositionBook() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
             try {
-            String json = mapper.writeValueAsString(positionBook);
+            String json = mapper.writeValueAsString(positions);
             return json;
         } catch (JsonProcessingException e) {
                 e.printStackTrace();
@@ -32,7 +29,10 @@ public class PositionBookController {
     // Process payment and receive true/false confirmation
     @PostMapping("/events")
     void sendTradeEvents(@RequestBody Events newEvents) {
-        positionBook.addEventsListToPositionBook(newEvents);
+        System.out.println("first");
+        System.out.println(newEvents.getEvents());
+        positions.addEventsListToPositionBook(newEvents);
+        System.out.println("third");
     }
 
     @DeleteMapping("/payments/{id}")

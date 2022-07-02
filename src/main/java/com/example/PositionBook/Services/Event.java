@@ -7,6 +7,10 @@ public class Event {
     private String security;
     private Double quantity;
 
+    public Event(){
+
+    }
+
     public String getAccount(){
         return account;
     }
