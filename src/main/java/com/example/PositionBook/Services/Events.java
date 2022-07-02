@@ -8,4 +8,8 @@ public class Events {
     public List<Event> getEvents(){
         return events;
     }
+
+    public void addEvent(Event newEvent){
+        events.add(newEvent);
+    }
 }
