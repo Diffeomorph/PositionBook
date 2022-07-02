@@ -3,10 +3,10 @@ package com.example.PositionBook.Services;
 import java.util.TreeMap;
 
 public class PositionBook {
-    final TreeMap<Pair<String,String>,Events> positionBook; // <account, security> -> list of events
+    final TreeMap<Pair<String,String>,Events> positions; // <account, security> -> list of events
 
     public PositionBook(){
-        this.positionBook = new TreeMap();
+        this.positions = new TreeMap();
     }
 
     public void addEventsListToPositionBook(Events newEvents){
@@ -14,7 +14,7 @@ public class PositionBook {
             String curAccount = curEvent.getAccount();
             String curSecurity = curEvent.getSecurity();
             Pair curPair = new Pair(curAccount,curSecurity);
-            Events curSelection = positionBook.getOrDefault(curPair,new Events());
+            Events curSelection = positions.getOrDefault(curPair,new Events());
             curSelection.addEvent(curEvent);
         }
     }

@@ -32,12 +32,8 @@ public class PositionBookController {
     // Process payment and receive true/false confirmation
     @PostMapping("/events")
     void sendTradeEvents(@RequestBody Events newEvents) {
-        for (Event event : newEvents.getEvents()){
-            //positionBook.addEvent()
-        }
+        positionBook.addEventsListToPositionBook(newEvents);
     }
-
-
 
     @DeleteMapping("/payments/{id}")
     void deletePayment(){
