@@ -1,11 +1,13 @@
 package com.example.PositionBook.Controllers;
 
-import com.example.PositionBook.Services.Events;
+import com.example.PositionBook.Services.Event;
 import com.example.PositionBook.Services.Positions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class PositionBookController {
@@ -27,11 +29,8 @@ public class PositionBookController {
     }
 
     @PostMapping("/events")
-    void sendTradeEvents(@RequestBody Events newEvents) {
-        System.out.println("first");
-        System.out.println(newEvents.getEvents());
+    void sendTradeEvents(@RequestBody List<Event> newEvents) {
         positions.addEventsListToPositionBook(newEvents);
-        System.out.println("third");
     }
 
     @DeleteMapping("/events/{id}")
