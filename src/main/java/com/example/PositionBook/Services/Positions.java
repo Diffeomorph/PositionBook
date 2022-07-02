@@ -14,8 +14,8 @@ public class Positions {
         this.positionBook = new TreeMap();
     }
 
-    public void addEventsListToPositionBook(List<Event> newEvents){
-        for (Event curEvent: newEvents){
+    public void addEventsListToPositionBook(Events newEvents){
+        for (Event curEvent: newEvents.getEvents()){
             String curAccount = curEvent.getAccount();
             String curSecurity = curEvent.getSecurity();
             Pair curPair = new Pair(curAccount,curSecurity);
