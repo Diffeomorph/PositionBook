@@ -1,54 +1,54 @@
 package com.example.PositionBook.Services;
 
 public class Event {
-    private String id;
-    private String action;
-    private String account;
-    private String security;
-    private Double quantity;
+    private String ID;
+    private String Action;
+    private String Account;
+    private String Security;
+    private Double Quantity;
 
     public Event(){
 
     }
 
     public String getId(){
-        return id;
+        return ID;
     }
 
     public void setId(String id){
-        this.id = id;
+        this.ID = ID;
     }
 
     public String getAction(){
-        return action;
+        return Action;
     }
 
-    public void setAction(String action){
-        this.action = action;
+    public void setAction(String Action){
+        this.Action = Action;
     }
 
     public String getAccount(){
-        return account;
+        return Account;
     }
 
-    public void setAccount(String account){
-        this.account = account;
+    public void setAccount(String Account){
+        this.Account = Account;
     }
 
     public String getSecurity(){
-        return security;
+        return Security;
     }
 
-    public void setSecurity(String security){
-        this.security = security;
+    public void setSecurity(String Security){
+        this.Security = Security;
     }
 
     public Double getQuantity(){
-        return quantity;
+        return Quantity;
     }
 
     public void setQuantity(Double quantity){
-        this.quantity = quantity;
+        this.Quantity = Quantity;
     }
 
 }
