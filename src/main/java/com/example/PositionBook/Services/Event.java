@@ -15,7 +15,7 @@ public class Event {
         return ID;
     }
 
-    public void setId(String id){
+    public void setId(String ID){
         this.ID = ID;
     }
 

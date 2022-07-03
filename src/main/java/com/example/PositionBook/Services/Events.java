@@ -9,7 +9,7 @@ public class Events {
         return Events;
     }
 
-    public void setEvents(List<Event> newEvents){
-        this.Events = newEvents;
+    public void setEvents(List<Event> Events){
+        this.Events = Events;
     }
 }
