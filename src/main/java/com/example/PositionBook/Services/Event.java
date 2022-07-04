@@ -54,7 +54,7 @@ public class Event {
         return quantity;
     }
 
-    public void setQuantity(Double quantity){
+    public void setQuantity(int quantity){
         this.quantity = quantity;
     }
 
