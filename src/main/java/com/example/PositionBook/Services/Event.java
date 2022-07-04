@@ -4,34 +4,34 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Event {
     @JsonProperty("ID")
-    private String id;
-    @JsonProperty("ID")
+    private int id;
+    @JsonProperty("Action")
     private String action;
-    @JsonProperty("ID")
+    @JsonProperty("Account")
     private String account;
-    @JsonProperty("ID")
+    @JsonProperty("Security")
     private String security;
-    @JsonProperty("ID")
+    @JsonProperty("Quantity")
     private int quantity;
 
     public Event(){
 
     }
 
-    public String getId(){
+    public int getId(){
         return id;
     }
 
-    public void setId(String ID){
+    public void setId(int ID){
         this.id = id;
     }
 
     public String getAction(){
-        return Action;
+        return action;
     }
 
-    public void setAction(String Action){
-        this.Action = Action;
+    public void setAction(String action){
+        this.action = action;
     }
 
     public String getAccount(){

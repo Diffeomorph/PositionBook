@@ -18,7 +18,7 @@ public class PositionBookController {
     private Positions positions;
 
     // Get all position book
-    @GetMapping("/position_book")
+    @GetMapping("/positions")
     String getPositionBook() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
             try {
@@ -32,23 +32,7 @@ public class PositionBookController {
 
     @PostMapping("/events")
     void sendTradeEvents(@RequestBody Events newEvents) {
-        HashMap<String,Position> curHashMap = new HashMap<>();
-        for (Event curEvent : newEvents.getEvents()){
-            String curAccount = curEvent.getAccount();
-            System.out.println(curAccount);
-            String curSecurity = curEvent.getSecurity();
-            System.out.println(curSecurity);
-            System.out.println("-----");
-            Position curPosition = curHashMap.getOrDefault(curAccount+curSecurity, new Position(curAccount, curSecurity));
-            curPosition.addEvent(curEvent);
-            int curQuantity = curPosition.getQuantity();
-            curQuantity += curEvent.getQuantity();
-            curPosition.setQuantity(curQuantity);
-            curHashMap.put(curAccount+curSecurity,curPosition);
-        }
-        for (var entry : curHashMap.entrySet()) {
-            positions.addPosition(entry.getValue());
-        }
+        positions.processNewEvents(newEvents);
     }
 
     @DeleteMapping("/events/{id}")

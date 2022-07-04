@@ -3,6 +3,7 @@ package com.example.PositionBook.Services;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -16,8 +17,21 @@ public class Positions {
         this.positions = positions;
     }
 
-    public void addPosition(Position newPosition){
-        positions.add(newPosition);
+    public void processNewEvents(Events newEvents){
+        HashMap<String,Position> curHashMap = new HashMap<>();
+        for (Event curEvent : newEvents.getEvents()){
+            String curAccount = curEvent.getAccount();
+            String curSecurity = curEvent.getSecurity();
+            Position curPosition = curHashMap.getOrDefault(curAccount+curSecurity, new Position(curAccount, curSecurity));
+            curPosition.addEvent(curEvent);
+            int curQuantity = curPosition.getQuantity();
+            curQuantity += curEvent.getQuantity();
+            curPosition.setQuantity(curQuantity);
+            curHashMap.put(curAccount+curSecurity,curPosition);
+        }
+        for (var entry : curHashMap.entrySet()) {
+            positions.add(entry.getValue());
+        }
     }
 }
 
