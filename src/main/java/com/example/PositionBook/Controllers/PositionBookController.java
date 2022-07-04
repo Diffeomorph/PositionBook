@@ -2,6 +2,7 @@ package com.example.PositionBook.Controllers;
 
 import com.example.PositionBook.Services.Event;
 import com.example.PositionBook.Services.Events;
+import com.example.PositionBook.Services.Position;
 import com.example.PositionBook.Services.Positions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,7 +32,8 @@ public class PositionBookController {
 
     @PostMapping("/events")
     void sendTradeEvents(@RequestBody Events newEvents) {
-        positions.addEventsListToPositionBook(newEvents);
+        Position newPosition = new Position();
+        newPosition.setAccount();
     }
 
     @DeleteMapping("/events/{id}")
