@@ -33,4 +33,9 @@ public class Position {
     public void setEvents(List<Event> events) {
         this.events = events;
     }
+
+    public void addEvent(Event event){
+        events.add(event);
+    }
+
 }

@@ -14,5 +14,9 @@ public class Positions {
     public void setPositions(List<Position> positions) {
         this.positions = positions;
     }
+
+    public void addPosition(Position newPosition){
+        positions.add(newPosition);
+    }
 }
 
