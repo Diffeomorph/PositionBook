@@ -5,7 +5,7 @@ public class Event {
     private String Action;
     private String Account;
     private String Security;
-    private Double Quantity;
+    private int Quantity;
 
     public Event(){
 
@@ -43,7 +43,7 @@ public class Event {
         this.Security = Security;
     }
 
-    public Double getQuantity(){
+    public int getQuantity(){
         return Quantity;
     }
 

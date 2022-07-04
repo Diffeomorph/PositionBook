@@ -1,16 +1,19 @@
 package com.example.PositionBook.Services;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Events {
-    private List<Event> Events = new ArrayList<>();
+    @JsonProperty("Events")
+    private List<Event> events = new ArrayList<>();
 
     public List<Event> getEvents() {
-        return Events;
+        return events;
     }
 
-    public void setEvents(List<Event> Events){
-        this.Events = Events;
+    public void setEvents(List<Event> events){
+        this.events = events;
     }
 }

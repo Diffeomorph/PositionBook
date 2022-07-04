@@ -2,11 +2,12 @@ package com.example.PositionBook.Services;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class Positions {
-    private List<Position> positions;
+    private List<Position> positions = new ArrayList<>();
 
     public List<Position> getPositions() {
         return positions;

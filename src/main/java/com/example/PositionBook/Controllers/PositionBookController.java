@@ -33,12 +33,13 @@ public class PositionBookController {
     @PostMapping("/events")
     void sendTradeEvents(@RequestBody Events newEvents) {
         HashMap<String,Position> curHashMap = new HashMap<>();
-        System.out.println("here1");
-        System.out.println(newEvents.getEvents());
         for (Event curEvent : newEvents.getEvents()){
             String curAccount = curEvent.getAccount();
+            System.out.println(curAccount);
             String curSecurity = curEvent.getSecurity();
-            Position curPosition = curHashMap.getOrDefault(curAccount+curSecurity, new Position());
+            System.out.println(curSecurity);
+            System.out.println("-----");
+            Position curPosition = curHashMap.getOrDefault(curAccount+curSecurity, new Position(curAccount, curSecurity));
             curPosition.addEvent(curEvent);
             int curQuantity = curPosition.getQuantity();
             curQuantity += curEvent.getQuantity();

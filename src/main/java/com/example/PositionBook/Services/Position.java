@@ -7,7 +7,14 @@ public class Position {
     private String account;
     private String security;
     private Integer quantity;
-    private List<Event> events = new ArrayList<Event>();
+    private List<Event> events;
+
+    public Position(String account, String security){
+        this.account = account;
+        this.security = security;
+        this.quantity = 0;
+        this.events = new ArrayList<>();
+    }
 
     public String getAccount() {
         return account;
