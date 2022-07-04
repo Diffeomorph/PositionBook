@@ -32,8 +32,10 @@ public class PositionBookController {
 
     @PostMapping("/events")
     void sendTradeEvents(@RequestBody Events newEvents) {
-        Position newPosition = new Position();
-        newPosition.setAccount();
+        for (Event curEvent : newEvents.getEvents()){
+            String curAccount = curEvent.getAccount();
+            String curSecurity = curEvent.getSecurity();
+        }
     }
 
     @DeleteMapping("/events/{id}")
