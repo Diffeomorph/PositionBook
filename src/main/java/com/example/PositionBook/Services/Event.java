@@ -1,22 +1,29 @@
 package com.example.PositionBook.Services;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Event {
-    private String ID;
-    private String Action;
-    private String Account;
-    private String Security;
-    private int Quantity;
+    @JsonProperty("ID")
+    private String id;
+    @JsonProperty("ID")
+    private String action;
+    @JsonProperty("ID")
+    private String account;
+    @JsonProperty("ID")
+    private String security;
+    @JsonProperty("ID")
+    private int quantity;
 
     public Event(){
 
     }
 
     public String getId(){
-        return ID;
+        return id;
     }
 
     public void setId(String ID){
-        this.ID = ID;
+        this.id = id;
     }
 
     public String getAction(){
@@ -28,27 +35,27 @@ public class Event {
     }
 
     public String getAccount(){
-        return Account;
+        return account;
     }
 
-    public void setAccount(String Account){
-        this.Account = Account;
+    public void setAccount(String account){
+        this.account = account;
     }
 
     public String getSecurity(){
-        return Security;
+        return security;
     }
 
-    public void setSecurity(String Security){
-        this.Security = Security;
+    public void setSecurity(String security){
+        this.security = security;
     }
 
     public int getQuantity(){
-        return Quantity;
+        return quantity;
     }
 
     public void setQuantity(Double quantity){
-        this.Quantity = Quantity;
+        this.quantity = quantity;
     }
 
 }
