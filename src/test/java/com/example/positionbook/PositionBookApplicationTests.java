@@ -1,6 +1,6 @@
-package com.example.PositionBook;
+package com.example.positionbook;
 
-import com.example.PositionBook.Services.Positions;
+import com.example.positionbook.Services.Positions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
