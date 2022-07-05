@@ -1,4 +1,4 @@
-package com.example.positionbook.Services;
+package com.example.positionbook.services;
 
 import java.util.ArrayList;
 import java.util.List;

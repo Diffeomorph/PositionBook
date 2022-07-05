@@ -1,4 +1,4 @@
-package com.example.positionbook.Services;
+package com.example.positionbook.services;
 
 import org.springframework.stereotype.Service;
 

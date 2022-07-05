@@ -1,9 +1,8 @@
-package com.example.positionbook.Controllers;
+package com.example.positionbook.controllers;
 
-import com.example.positionbook.Services.Events;
-import com.example.positionbook.Services.Positions;
+import com.example.positionbook.services.Events;
+import com.example.positionbook.services.Positions;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

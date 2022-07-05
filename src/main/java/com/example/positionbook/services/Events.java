@@ -1,4 +1,4 @@
-package com.example.positionbook.Services;
+package com.example.positionbook.services;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
