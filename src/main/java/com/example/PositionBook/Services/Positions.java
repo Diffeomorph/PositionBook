@@ -3,8 +3,8 @@ package com.example.PositionBook.Services;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 @Service
 public class Positions {
@@ -13,23 +13,42 @@ public class Positions {
     public List<Position> getPositions() {
         return positions;
     }
+
     public void setPositions(List<Position> positions) {
         this.positions = positions;
     }
 
     public void processNewEvents(Events newEvents){
-        HashMap<String,Position> curHashMap = new HashMap<>();
+        TreeMap<String,Position> curTreeMap = new TreeMap<>();
         for (Event curEvent : newEvents.getEvents()){
             String curAccount = curEvent.getAccount();
             String curSecurity = curEvent.getSecurity();
-            Position curPosition = curHashMap.getOrDefault(curAccount+curSecurity, new Position(curAccount, curSecurity));
+            Position curPosition = curTreeMap.getOrDefault(curAccount+curSecurity, new Position(curAccount, curSecurity));
+
+            if (curEvent.getAction().equals("CANCEL")){
+                for (Event event: curPosition.getEvents()){
+                    if (event.getId() == curEvent.getId()){
+                        int curQuantity = curPosition.getQuantity();
+                        curQuantity -= event.getQuantity();
+                        curPosition.setQuantity(curQuantity);
+                    }
+                }
+            }
+
             curPosition.addEvent(curEvent);
+
             int curQuantity = curPosition.getQuantity();
-            curQuantity += curEvent.getQuantity();
+            if (curEvent.getAction().equals("BUY")){
+                curQuantity += curEvent.getQuantity();
+            } else if (curEvent.getAction().equals("SELL")){
+                curQuantity -= curEvent.getQuantity();
+            }
+
             curPosition.setQuantity(curQuantity);
-            curHashMap.put(curAccount+curSecurity,curPosition);
+            curTreeMap.put(curAccount+curSecurity,curPosition);
         }
-        for (var entry : curHashMap.entrySet()) {
+
+        for (var entry : curTreeMap.entrySet()) {
             positions.add(entry.getValue());
         }
     }

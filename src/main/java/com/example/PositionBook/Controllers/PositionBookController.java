@@ -1,15 +1,12 @@
 package com.example.PositionBook.Controllers;
 
-import com.example.PositionBook.Services.Event;
 import com.example.PositionBook.Services.Events;
-import com.example.PositionBook.Services.Position;
 import com.example.PositionBook.Services.Positions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 
 @RestController
 public class PositionBookController {
@@ -33,11 +30,6 @@ public class PositionBookController {
     @PostMapping("/events")
     void sendTradeEvents(@RequestBody Events newEvents) {
         positions.processNewEvents(newEvents);
-    }
-
-    @DeleteMapping("/events/{id}")
-    void deleteEvent(){
-        // code
     }
 
 }
