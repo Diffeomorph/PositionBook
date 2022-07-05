@@ -17,14 +17,7 @@ public class PositionBookController {
     // Get all position book
     @GetMapping("/positions")
     String getPositionBook() throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-            try {
-            String json = mapper.writeValueAsString(positions);
-            return json;
-        } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            return "";
-        }
+        return positions.toString();
     }
 
     @PostMapping("/events")
