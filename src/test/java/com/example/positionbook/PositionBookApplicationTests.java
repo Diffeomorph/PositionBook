@@ -1,48 +1,44 @@
 package com.example.positionbook;
 
 import com.example.positionbook.controllers.PositionBookController;
-import com.example.positionbook.services.Events;
-import com.example.positionbook.services.Positions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 @SpringBootTest
 class PositionBookApplicationTests {
 
-	@Autowired
-	private Positions positionsTest;
+	@InjectMocks
+	private PositionBookController positionBookController;
 
-	@Test
-	void contextLoads() {
+	private MockMvc mockMvc;
+
+	@BeforeEach
+	public void setup() {
+		mockMvc = MockMvcBuilders.standaloneSetup(positionBookController).build();
 	}
 
 	@Test
-	void testTradeEventEndPoint(){
-		PositionBookController pbcTest = new PositionBookController();
-		String newEventsJson = new String("{\n" +
-				"    \"Events\": [\n" +
-				"        {\n" +
-				"            \"ID\": 1,\n" +
-				"            \"Action\": \"BUY1\",\n" +
-				"            \"Account\": \"ACC1\",\n" +
-				"            \"Security\": \"SEC1\",\n" +
-				"            \"Quantity\": 12\n" +
-				"        },\n" +
-				"        {\n" +
-				"            \"ID\": 2,\n" +
-				"            \"Action\": \"BUY1\",\n" +
-				"            \"Account\": \"ACC1\",\n" +
-				"            \"Security\": \"SEC1\",\n" +
-				"            \"Quantity\": 24\n" +
-				"        }\n" +
-				"    ]\n" +
-				"}");
-		pbcTest.sendTradeEvents(newEventsJson);
-		assertArrayEquals(positionsTest., true);
+	void testTradeEventEndPoint() throws Exception {
+		String newEventsJson = "{\"Events\":[{\"ID\":1,\"Action\":\"BUY1\",\"Account\":\"ACC1\",\"Security\":\"SEC1\",\"Quantity\":12},{\"ID\":2,\"Action\":\"BUY1\",\"Account\":\"ACC1\",\"Security\":\"SEC1\",\"Quantity\":24}]}";
+		mockMvc.perform(post("/events").contentType(MediaType.APPLICATION_JSON).content(newEventsJson));
+
+		String result = mockMvc.perform(MockMvcRequestBuilders.get("positions")).andReturn().toString();
+
+		String expected = "[{\"account\":\"ACC1\",\"security\":\"SEC1\",\"quantity\":0,\"events\":[{\"ID\":1,\"Action\":\"BUY1\",\"Account\":\"ACC1\",\"Security\":\"SEC1\",\"Quantity\":12},{\"ID\":2,\"Action\":\"BUY1\",\"Account\":\"ACC1\",\"Security\":\"SEC1\",\"Quantity\":24}]}]";
+		assertEquals(expected,result);
+
 	}
+
+
 
 }

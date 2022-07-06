@@ -1,10 +1,13 @@
 package com.example.positionbook.controllers;
 
 import com.example.positionbook.services.Events;
+import com.example.positionbook.services.Position;
 import com.example.positionbook.services.Positions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -15,8 +18,8 @@ public class PositionBookController {
 
     // Get all position book
     @GetMapping("/positions")
-    String getPositionBook() throws JsonProcessingException {
-        return positions.toString();
+    List<Position> getPositionBook() throws JsonProcessingException {
+        return positions.getPositions();
     }
 
     @PostMapping("/events")
