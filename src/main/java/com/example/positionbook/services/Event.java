@@ -2,6 +2,10 @@ package com.example.positionbook.services;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/*
+A class to store each trade event and its associated data
+*/
+
 public class Event {
     @JsonProperty("ID")
     private int id;

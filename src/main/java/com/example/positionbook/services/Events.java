@@ -5,7 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+A class to store the list of all events read into the program
+*/
+
 public class Events {
+
     @JsonProperty("Events")
     private List<Event> events = new ArrayList<>();
 

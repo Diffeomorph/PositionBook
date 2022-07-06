@@ -5,13 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+A class to store aggregated events
+*/
+
 public class Position {
     @JsonProperty("Account")
     private String account;
     @JsonProperty("Security")
     private String security;
     @JsonProperty("Quantity")
-    private Integer quantity;
+    private int quantity;
     @JsonProperty("Events")
     private List<Event> events;
 
@@ -34,7 +38,7 @@ public class Position {
     public void setSecurity(String security) {
         this.security = security;
     }
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
     public void setQuantity(Integer quantity) {

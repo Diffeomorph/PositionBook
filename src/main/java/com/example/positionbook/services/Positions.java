@@ -7,8 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+/*
+A class to store list of all positions (aggregated trade events). It also holds the functionality
+to process events sent into the program.
+*/
+
+
 @Service
 public class Positions {
+
     @JsonProperty("Positions")
     private List<Position> positions = new ArrayList<>();
 
@@ -40,12 +47,14 @@ public class Positions {
             curPosition.addEvent(curEvent);
 
             int curQuantity = curPosition.getQuantity();
+            System.out.println(curQuantity);
             if (curEvent.getAction().equals("BUY")){
                 curQuantity += curEvent.getQuantity();
             } else if (curEvent.getAction().equals("SELL")){
                 curQuantity -= curEvent.getQuantity();
             }
-
+            System.out.println(curQuantity);
+            System.out.println("-----");
             curPosition.setQuantity(curQuantity);
             curTreeMap.put(curAccount+curSecurity,curPosition);
         }
