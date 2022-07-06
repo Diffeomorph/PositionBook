@@ -1,5 +1,6 @@
 package com.example.positionbook.services;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.TreeMap;
 
 @Service
 public class Positions {
+    @JsonProperty("Positions")
     private List<Position> positions = new ArrayList<>();
 
     public List<Position> getPositions() {

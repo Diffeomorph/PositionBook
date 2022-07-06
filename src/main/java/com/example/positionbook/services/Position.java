@@ -1,12 +1,18 @@
 package com.example.positionbook.services;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Position {
+    @JsonProperty("Account")
     private String account;
+    @JsonProperty("Security")
     private String security;
+    @JsonProperty("Quantity")
     private Integer quantity;
+    @JsonProperty("Events")
     private List<Event> events;
 
     public Position(String account, String security){
